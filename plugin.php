@@ -5,7 +5,7 @@
  * Plugin URI:        https://github.com/RyanMan56/wp-api-multiple-posttype
  * Description:       Extension of wp/v2/posts api to allow query multiple post types
  * Version:           1.0.2
- * Author:            ElevatiInfotech
+ * Author:            RyanMan56
  * Author URI:        https://github.com/ryanman56
  * License:           GPL-3.0-or-later
  */
