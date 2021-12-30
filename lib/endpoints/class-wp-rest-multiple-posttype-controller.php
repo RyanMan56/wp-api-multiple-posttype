@@ -86,6 +86,8 @@ class WP_REST_Multiple_PostType_Controller extends WP_REST_Controller
         $args['post_parent__not_in'] = $request['parent_exclude'];
         $args['post_status'] = $request['status'];
         $args['s'] = $request['search'];
+        $args['_fields'] = $request['_fields'];
+        $args['acf_format'] = $request['acf_format'];
 
         # Param Validation
         if (empty($args['post_type']) || !is_array($args['post_type'])) {
@@ -149,19 +151,25 @@ class WP_REST_Multiple_PostType_Controller extends WP_REST_Controller
 
         // Execute the query
         $posts_query = new WP_Query();
+
         $query_result = $posts_query->query($query_args);
 
         // Handle query results
         $posts = array();
         foreach ($query_result as $post) {
+            $field = get_field('primary_image', $post->ID);
+            
             // Get PostController for Post Type
             $postsController = new WP_REST_Posts_Controller($post->post_type);
 
+            
             if (!$postsController->check_read_permission($post)) {
                 continue;
             }
 
             $data = $postsController->prepare_item_for_response($post, $request);
+            $data->data['primary_image'] = $field;
+
             $posts[] = $postsController->prepare_response_for_collection($data);
         }
 
@@ -323,7 +331,9 @@ class WP_REST_Multiple_PostType_Controller extends WP_REST_Controller
             'meta_query',
             'meta_key',
             'meta_value',
-            'meta_compare'
+            'meta_compare',
+            '_fields',
+            'acf_format'
         );
         $valid_vars = array_merge($valid_vars, $rest_valid);
 
