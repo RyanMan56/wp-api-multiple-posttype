@@ -1,12 +1,12 @@
 <?php
 
 /*
- * Plugin Name:       WP Rest Api V2 Multiple PostTypes
- * Plugin URI:        https://github.com/elevati/wp-api-multiple-posttype
+ * Plugin Name:       Healthy Relationships - WP Rest Api V2 Multiple PostTypes
+ * Plugin URI:        https://github.com/RyanMan56/wp-api-multiple-posttype
  * Description:       Extension of wp/v2/posts api to allow query multiple post types
  * Version:           1.0.2
  * Author:            ElevatiInfotech
- * Author URI:        https://github.com/elevati
+ * Author URI:        https://github.com/ryanman56
  * License:           GPL-3.0-or-later
  */
 
